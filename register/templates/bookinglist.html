@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+      <div class="container">
+      <!-- FORM HERE -->
+      <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Previous Booked calls!</legend>
+                {% for post in lis %}
+                  <article class="content-section">
+                  <div class="media">
+                  <div class="media-body">
+                    <label>Advisor :</label>
+                    <a class="mr-2" href="#">{{ post.Advisor }}</a>
+                    <div class="article-metadata">
+                      <label>User :</label>
+                      <a class="mr-2" href="#">{{ post.username }}</a>
+                    </div>
+                    <div class="article-metadata">
+                      <label>Date :</label>
+                      <a class="mr-2" href="#">{{ post.date }}</a>
+                    </div>
+                    <div class="article-metadata">
+                      <label>Time :</label>
+                      <a class="mr-2" href="#">{{ post.time }}</a>
+                    </div>
+                  </div>
+                </div>
+                </article>
+
+                {% endfor %}
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}
